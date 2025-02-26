@@ -6,7 +6,7 @@ const commentForm = document.getElementById('commentForm');
 
 const fetchComments = async () => {
   try {
-    const response = await fetch(`/api/comment/${blogId}`);
+    const response = await fetch(`https://caredesk-backend-codes.onrender.com/api/comment/${blogId}`);
     const comments = await response.json();
 
     if (comments.length === 0) {
@@ -38,7 +38,7 @@ commentForm.addEventListener('submit', async (e) => {
   const text = document.getElementById('text').value;
 
   try {
-    await fetch(`/api/comment/${blogId}`, {
+    await fetch(`https://caredesk-backend-codes.onrender.com/api/comment/${blogId}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, text }),
