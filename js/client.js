@@ -5,7 +5,7 @@ let blogs = [];
 let blogOffset = 15;
 
 // Backend API Base URL (Update this when deploying)
-const API_BASE_URL = "https://my-blog-api.com/api/blog"; 
+const API_BASE_URL = "https://caredesk-backend-codes.onrender.com/api/blog"; 
 
 // Load Cached Blogs First (for faster rendering)
 const cachedBlogs = localStorage.getItem("cachedBlogs");
