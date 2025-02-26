@@ -4,7 +4,7 @@ const blogId = params.get('id');
 
 async function fetchBlogDetails() {
   try {
-    const response = await fetch(`/api/blog/${blogId}`);
+    const response = await fetch(`https://caredesk-backend-codes.onrender.com/api/blog/${blogId}`);
     const blog = await response.json();
 
     if (!blog || response.status !== 200) {
