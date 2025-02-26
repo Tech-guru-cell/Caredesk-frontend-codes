@@ -43,7 +43,7 @@ blogForm.addEventListener('submit', async (e) => {
   if (video) formData.append('video', video);
 
   try {
-    const response = await fetch('/api/admin/create', {
+    const response = await fetch('https://caredesk-backend-codes.onrender.com/api/admin/create', {
       method: 'POST',
       body: formData,
     });
@@ -65,7 +65,7 @@ blogForm.addEventListener('submit', async (e) => {
 // Fetch all blogs for the admin panel
 const fetchAdminBlogs = async () => {
   try {
-    const response = await fetch('/api/admin/all');
+    const response = await fetch('https://caredesk-backend-codes.onrender.com/api/admin/all');
     const blogs = await response.json();
 
     adminBlogsContainer.innerHTML = blogs
@@ -98,7 +98,7 @@ const editBlog = async (id) => {
   }
 
   try {
-    const response = await fetch(`/api/admin/edit/${id}`, {
+    const response = await fetch(`https://caredesk-backend-codes.onrender.com/api/admin/edit/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title: newTitle, content: newContent, category: newCategory }),
@@ -124,7 +124,7 @@ const deleteBlog = async (id) => {
   }
 
   try {
-    const response = await fetch(`/api/admin/delete/${id}`, { method: 'DELETE' });
+    const response = await fetch(`https://caredesk-backend-codes.onrender.com/api/admin/delete/${id}`, { method: 'DELETE' });
 
     if (response.ok) {
       alert('Blog deleted successfully.');
