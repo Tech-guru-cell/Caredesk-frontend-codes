@@ -1,11 +1,11 @@
-const blogsContainer = document.getElementById('blogs'); 
+const blogsContainer = document.getElementById('blogs');
 const searchBar = document.getElementById('search-bar');
 const categoryLinks = document.getElementById('categories');
 let blogs = [];
 let blogOffset = 15;
 
-// Backend API Base URL (Update this when deploying)
-const API_BASE_URL = "https://caredesk-backend-codes.onrender.com/api/blog"; 
+// Frontend API Base URL (Update this when deploying)
+const API_BASE_URL = "https://tech-guru-cell.github.io/api/blog"; // Update to frontend API URL
 
 // Load Cached Blogs First (for faster rendering)
 const cachedBlogs = localStorage.getItem("cachedBlogs");
@@ -19,7 +19,7 @@ async function fetchFirstBlogs() {
   try {
     const response = await fetch(`${API_BASE_URL}/first-blogs`);
     blogs = await response.json();
-    
+
     localStorage.setItem("cachedBlogs", JSON.stringify(blogs)); // Cache blogs
     displayBlogs(blogs);
   } catch (err) {
@@ -69,10 +69,13 @@ async function fetchBlogsByCategory(category, page = 1, append = false) {
 function displayBlogs(blogsToDisplay, append = false) {
   const blogHTML = blogsToDisplay.map(blog => {
     let mediaElement = "";
+    // Update media URLs to be frontend-based
+    const mediaBaseURL = "https://tech-guru-cell.github.io/uploads/"; // Frontend URL for media
+
     if (blog.video) {
-      mediaElement = `<video src="${blog.video}" controls></video>`; 
+      mediaElement = `<video src="${mediaBaseURL}${blog.video}" controls></video>`;
     } else if (blog.image) {
-      mediaElement = `<img src="${blog.image}" alt="${blog.title}"/>`; 
+      mediaElement = `<img src="${mediaBaseURL}${blog.image}" alt="${blog.title}"/>`;
     }
 
     return `
@@ -165,7 +168,7 @@ const shareBlog = async (id) => {
 
     const data = await response.json();
     const blogUrl = data.blogUrl;
-    const previewText = data.previewText; 
+    const previewText = data.previewText;
 
     const shareText = `📢 ${previewText} Read more: 👇 ${blogUrl}`;
 
